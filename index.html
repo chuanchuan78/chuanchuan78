@@ -4,17 +4,17 @@
   <meta charset="utf-8">
   
   
-  <title>KKT条件</title>
+  <title>欢迎</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta property="og:type" content="website">
-<meta property="og:title" content="KKT条件">
+<meta property="og:title" content="欢迎">
 <meta property="og:url" content="http://example.com/index.html">
-<meta property="og:site_name" content="KKT条件">
+<meta property="og:site_name" content="欢迎">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
-    <link rel="alternate" href="/atom.xml" title="KKT条件" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="欢迎" type="application/atom+xml">
   
   
     <link rel="shortcut icon" href="/favicon.png">
@@ -42,7 +42,7 @@
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
-        <a href="/" id="logo">KKT条件</a>
+        <a href="/" id="logo">欢迎</a>
       </h1>
       
     </div>
@@ -71,107 +71,6 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-KKT条件" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/08/06/KKT%E6%9D%A1%E4%BB%B6/" class="article-date">
-  <time class="dt-published" datetime="2022-08-06T12:08:07.734Z" itemprop="datePublished">2022-08-06</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p><img src="https://pic2.zhimg.com/v2-a66b9e2a11cba5f9b05156e11817bc6c_1440w.jpg?source=172ae18b" alt="浅谈最优化问题的KKT条件"></p>
-<h1 id="浅谈最优化问题的KKT条件"><a href="#浅谈最优化问题的KKT条件" class="headerlink" title="浅谈最优化问题的KKT条件"></a>浅谈最优化问题的KKT条件</h1><p><a target="_blank" rel="noopener" href="https://www.zhihu.com/people/li-xue-zha-61"><img src="https://pic1.zhimg.com/v2-e176419b7d8b5813eaf351df6f3b2e72_xs.jpg?source=172ae18b" alt="力学渣"></a></p>
-<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/people/li-xue-zha-61">力学渣</a></p>
-<p>NLP&amp;ML新手</p>
-<p>2,134 人赞同了该文章</p>
-<p>最近学习了最优化理论，正好学到了机器学习中支持向量机（Support Vector Machine）和最大熵模型（Maximum Entropy Model）中用到的KKT条件（Karush–Kuhn–Tucker conditions）.</p>
-<p>之前看了一些相关书籍，发现KKT条件的证明不是有些简略，就是太偏“数学”（对于非数学专业的学生可能看不懂）——不适合非数学专业的同学入门. 因此我通过总结教材、上课笔记和加入一些帮助理解的重要注记（个人认为不“显然”的内容），写下这篇文章，供大家学习和交流！</p>
-<p>PS：知乎的排版有些乱，望看官们不要介意：）</p>
-<p>目录：</p>
-<blockquote>
-<p>0.什么是KKT条件<br>1.等式约束优化问题（Lagrange乘数法）<br>2.不等式约束优化问题<br>3.总结</p>
-</blockquote>
-<h2 id="0-什么是KKT条件"><a href="#0-什么是KKT条件" class="headerlink" title="0.什么是KKT条件"></a><strong>0.什么是KKT条件</strong></h2><p>本文从本科高数（微积分）中的有条件极值的Lagrange乘数法入手，一步步推导到KKT条件. 但在讲述推导过程之前，我想先给出KKT条件：</p>
-<p>对于具有等式和不等式约束的一般优化问题</p>
-<p><img src="https://www.zhihu.com/equation?tex=%5C%5B%5Cbegin%7Barray%7D%7Bl%7D%0A%5Cmin+%7B%5Crm%7B++%7D%7Df(%7B%5Cbf%7Bx%7D%7D)%5C%5C%0As.t.%7B%5Crm%7B+++%7D%7D%7Bg_j%7D(%7B%5Cbf%7Bx%7D%7D)+%5Cle+0(j+=+1,2,+%5Ccdots+,m)%5C%5C%0A%7B%5Crm%7B+++++++%7D%7D%7Bh_k%7D(%7B%5Cbf%7Bx%7D%7D)+=+0(k+=+1,2,+%5Ccdots+,l)%0A%5Cend%7Barray%7D%5C%5D" alt="[公式]"></p>
-<p>KKT条件给出了判断<img src="https://www.zhihu.com/equation?tex=%5C%5B%7B%7B%5Cbf%7Bx%7D%7D%5E*%7D%5C%5D" alt="[公式]">是否为最优解的<strong>必要条件</strong>，即：</p>
-<p><img src="https://www.zhihu.com/equation?tex=%5C%5B%5Cleft%5C%7B+%5Cbegin%7Barray%7D%7Bl%7D%0A%5Cfrac%7B%7B%5Cpartial+f%7D%7D%7B%7B%5Cpartial+%7Bx_i%7D%7D%7D+++%5Csum%5Climits_%7Bj+=+1%7D%5Em+%7B%7B%5Cmu+_j%7D%7D+%5Cfrac%7B%7B%5Cpartial+%7Bg_j%7D%7D%7D%7B%7B%5Cpartial+%7Bx_i%7D%7D%7D+++%5Csum%5Climits_%7Bk+=+1%7D%5El+%7B%7B%5Clambda+_k%7D%5Cfrac%7B%7B%5Cpartial+%7Bh_k%7D%7D%7D%7B%7B%5Cpartial+%7Bx_i%7D%7D%7D%7D++=+0,%7B%5Crm%7B+%7D%7D%5Cleft(+%7Bi+=+1,2,...,n%7D+%5Cright)%5C%5C%0A%7Bh_k%7D%5Cleft(+%7B%5Cbf%7Bx%7D%7D+%5Cright)+=+0,%7B%5Crm%7B+(%7D%7Dk+=+1,2,+%5Ccdots+,l)%5C%5C%0A%7B%5Cmu+_j%7D%7Bg_j%7D%5Cleft(+%7B%5Cbf%7Bx%7D%7D+%5Cright)+=+0,%7B%5Crm%7B+(%7D%7Dj+=+1,2,+%5Ccdots+,m)%5C%5C%0A%7B%5Cmu+_j%7D+%5Cge+0.%0A%5Cend%7Barray%7D+%5Cright.%5C%5D" alt="[公式]"></p>
-<h2 id="1-等式约束优化问题（Lagrange乘数法）"><a href="#1-等式约束优化问题（Lagrange乘数法）" class="headerlink" title="1. 等式约束优化问题（Lagrange乘数法）"></a><strong>1. 等式约束优化问题（Lagrange乘数法）</strong></h2><p><strong>对于这部分内容，其实本科高数课程中已学过，因此本文直接给出结论，并补充一些我的理解与总结，它能帮助理解不等式约束中的一些内容，具体的推导过程在同济7版的高数下册（P.116-118）中已写的较详细。</strong></p>
-<p>所谓的等式约束优化问题是指</p>
-<p><img src="https://www.zhihu.com/equation?tex=minf(x_%7B1%7D+,x_%7B2%7D+,...,x_%7Bn%7D+)" alt="[公式]"><br><img src="https://www.zhihu.com/equation?tex=s.t.h_%7Bk%7D+(x_%7B1%7D+,x_%7B2%7D+,...,x_%7Bn%7D+)=0" alt="[公式]"></p>
-<p>我们令<img src="https://www.zhihu.com/equation?tex=%5C%5BL(%7B%5Cbf%7Bx%7D%7D,%7B%5Cbf%7B%5Clambda+%7D%7D)+=+f(%7B%5Cbf%7Bx%7D%7D)+++%5Csum%5Climits_%7Bk+=+1%7D%5El+%7B%7B%5Clambda+_k%7D%7Bh_k%7D(%7B%5Cbf%7Bx%7D%7D)%7D+%5C%5D" alt="[公式]">，函数<img src="https://www.zhihu.com/equation?tex=L(x,y)" alt="[公式]">称为Lagrange函数，参数<img src="https://www.zhihu.com/equation?tex=%5Clambda+" alt="[公式]">称为Lagrange乘子.</p>
-<p>再联立方程组：<img src="https://www.zhihu.com/equation?tex=%5C%5B%5Cleft%5C%7B+%5Cbegin%7Barray%7D%7Bl%7D%0A%5Cfrac%7B%7B%5Cpartial+L%7D%7D%7B%7B%5Cpartial+%7Bx_i%7D%7D%7D+=+0%7B%5Crm%7B++++(+%7D%7Di%7B%5Crm%7B++=++1+,2+,%7D%7D+%5Ccdots+%7B%5Crm%7B,%7D%7Dn%7B%5Crm%7B+)+%7D%7D%5C%5C%0A%5Cfrac%7B%7B%5Cpartial+L%7D%7D%7B%7B%5Cpartial+%7B%5Clambda+_k%7D%7D%7D+=+0%7B%5Crm%7B+++(+%7D%7Dk%7B%5Crm%7B++=++1+,2+,%7D%7D+%5Ccdots+%7B%5Crm%7B,%7D%7Dl%7B%5Crm%7B+)+%7D%7D%0A%5Cend%7Barray%7D+%5Cright.%5C%5D" alt="[公式]">，</p>
-<p>得到的解为<strong>可能极值点</strong>，由于我们用的是必要条件，具体是否为极值点需根据问题本身的具体情况检验. 这个方程组称为<strong>等式约束的极值必要条件.</strong></p>
-<p>上式我们对<img src="https://www.zhihu.com/equation?tex=n" alt="[公式]">个<img src="https://www.zhihu.com/equation?tex=x_%7Bi%7D+" alt="[公式]">和<img src="https://www.zhihu.com/equation?tex=l" alt="[公式]">个<img src="https://www.zhihu.com/equation?tex=%5Clambda+_%7Bk%7D+" alt="[公式]">分别求偏导，回想一下在无约束优化问题<img src="https://www.zhihu.com/equation?tex=f(x_%7B1%7D,+x_%7B2%7D,...,x_%7Bn%7D+)=0" alt="[公式]">中，我们根据极值的必要条件，分别令<img src="https://www.zhihu.com/equation?tex=%5Cfrac%7B%5Cpartial+f%7D%7B%5Cpartial+x_%7Bi%7D+%7D+=0" alt="[公式]">，求出可能的极值点. 因此可以<strong>联想</strong>到：<strong>等式约束下的Lagrange乘数法引入了<img src="https://www.zhihu.com/equation?tex=l" alt="[公式]">个Lagrange乘子，或许我们可以把<img src="https://www.zhihu.com/equation?tex=%5Clambda+_%7Bk%7D+" alt="[公式]">也看作优化变量（<img src="https://www.zhihu.com/equation?tex=x_%7Bi%7D+" alt="[公式]">就叫做优化变量）.</strong> 相当于将优化变量个数增加到<img src="https://www.zhihu.com/equation?tex=(n+l)" alt="[公式]">个，**<img src="https://www.zhihu.com/equation?tex=x_%7Bi%7D+" alt="[公式]">与<img src="https://www.zhihu.com/equation?tex=%5Clambda+_%7Bk%7D+" alt="[公式]">一视同仁，均为优化变量，**均对它们求偏导.</p>
-<h2 id="2-不等式约束优化问题"><a href="#2-不等式约束优化问题" class="headerlink" title="2. 不等式约束优化问题"></a><strong>2. 不等式约束优化问题</strong></h2><p>以上我们讨论了等式约束的情形，接下来我们来介绍不等式约束的优化问题.我们先给出其<strong>主要思想：转化的思想——将不等式约束条件变成等式约束条件.具体做法：引入松弛变量.<strong>松弛变量也是优化变量，也需要</strong>一视同仁求偏导.</strong></p>
-<p><img src="https://pic3.zhimg.com/80/v2-f50f388be97bb3a5e54c3278a400b7a2_720w.jpg" alt="img"></p>
-<p>具体而言，我们先看一个一元函数的例子：</p>
-<p><img src="https://www.zhihu.com/equation?tex=minf(x)" alt="[公式]"><br><img src="https://www.zhihu.com/equation?tex=s.t.+g_%7B1%7D(x)+=a-x%5Cleq+0%0A+++++%5C%5Cg_%7B2%7D(x)+=x-b%5Cleq+0" alt="[公式]"></p>
-<p>（注：优化问题中，我们必须求得一个确定的值，因此不妨令所有的不等式均取到等号，即<img src="https://www.zhihu.com/equation?tex=%5Cleq+" alt="[公式]">的情况.）</p>
-<p>对于约束<img src="https://www.zhihu.com/equation?tex=g_%7B1%7D+" alt="[公式]">和<img src="https://www.zhihu.com/equation?tex=g_%7B2%7D+" alt="[公式]">，我们分别引入两个松弛变量<img src="https://www.zhihu.com/equation?tex=a_%7B1%7D%5E%7B2%7D+" alt="[公式]">和<img src="https://www.zhihu.com/equation?tex=b_%7B1%7D%5E%7B2%7D+" alt="[公式]">，得到<img src="https://www.zhihu.com/equation?tex=h_%7B1%7D+(x,a_%7B1%7D+)=g_%7B1%7D++a_%7B1%7D%5E%7B2%7D+=0" alt="[公式]">和<img src="https://www.zhihu.com/equation?tex=h_%7B2%7D+(x,b_%7B1%7D+)=g_%7B2%7D++b_%7B1%7D%5E%7B2%7D+=0" alt="[公式]">.注意，这里直接加上平方项<img src="https://www.zhihu.com/equation?tex=a_%7B1%7D%5E%7B2%7D+" alt="[公式]">、<img src="https://www.zhihu.com/equation?tex=b_%7B1%7D%5E%7B2%7D+" alt="[公式]">而非<img src="https://www.zhihu.com/equation?tex=a_%7B1%7D+" alt="[公式]">、<img src="https://www.zhihu.com/equation?tex=b_%7B1%7D+" alt="[公式]">，是因为<img src="https://www.zhihu.com/equation?tex=g_%7B1%7D+" alt="[公式]">和<img src="https://www.zhihu.com/equation?tex=g_%7B2%7D+" alt="[公式]">这两个不等式的左边必须加上一个正数才能使不等式变为等式.若只加上<img src="https://www.zhihu.com/equation?tex=a_%7B1%7D+" alt="[公式]">和<img src="https://www.zhihu.com/equation?tex=b_%7B1%7D+" alt="[公式]">，又会引入新的约束<img src="https://www.zhihu.com/equation?tex=a_%7B1%7D+%5Cgeq+0" alt="[公式]">和<img src="https://www.zhihu.com/equation?tex=b_%7B1%7D+%5Cgeq+0" alt="[公式]">，这不符合我们的意愿.</p>
-<p><img src="https://pic4.zhimg.com/80/v2-dcf3439670719b2ac1d8878bef7d80cf_720w.jpg" alt="img"></p>
-<p>由此我们将不等式约束转化为了等式约束，并得到Lagrange函数</p>
-<p><img src="https://www.zhihu.com/equation?tex=L(x,a_%7B1%7D+,b_%7B1%7D+,%5Cmu+_%7B1%7D+,%5Cmu+_%7B2%7D+)=f(x)+%5Cmu+_%7B1%7D(a-x+a_%7B1%7D%5E%7B2%7D+)+%5Cmu+_%7B2%7D(x-b+b_%7B1%7D%5E%7B2%7D+)" alt="[公式]"></p>
-<p>我们再按照等式约束优化问题（极值必要条件）对其求解，联立方程</p>
-<p><img src="https://pic4.zhimg.com/80/v2-0010a6f1f0d9753c0416f80a6c195693_720w.jpg" alt="img"></p>
-<p><strong>（注：这里的<img src="https://www.zhihu.com/equation?tex=%5Cmu+_%7B1%7D+%5Cgeq+0" alt="[公式]">，<img src="https://www.zhihu.com/equation?tex=%5Cmu+_%7B2%7D+%5Cgeq+0" alt="[公式]">先承认，我们待会再解释！（先上车再买票，手动斜眼）实际上对于不等式约束前的乘子，我们要求其大于等于0）</strong></p>
-<p>得出方程组后，便开始动手解它. 看到第3行的两式<img src="https://www.zhihu.com/equation?tex=%5Cmu+_%7B1%7D+a_%7B1%7D+=0" alt="[公式]">和<img src="https://www.zhihu.com/equation?tex=%5Cmu+_%7B1%7D+a_%7B1%7D+=0" alt="[公式]">比较简单，我们就从它们入手吧~</p>
-<p>对于<img src="https://www.zhihu.com/equation?tex=%5Cmu+_%7B1%7D+a_%7B1%7D+=0" alt="[公式]">，我们有两种情况：</p>
-<p>情形1： <img src="https://www.zhihu.com/equation?tex=%5Cmu+_%7B1%7D+=0,a_%7B1%7D+%5Cne+0" alt="[公式]"></p>
-<p>此时由于乘子<img src="https://www.zhihu.com/equation?tex=%5Cmu+_%7B1%7D+=0" alt="[公式]">，因此<img src="https://www.zhihu.com/equation?tex=g_%7B1%7D+" alt="[公式]">与其相乘为零，可以理解为<strong>约束<img src="https://www.zhihu.com/equation?tex=g_%7B1%7D+" alt="[公式]">不起作用，且有<img src="https://www.zhihu.com/equation?tex=g_%7B1%7D(x)+=a-x%3C+0" alt="[公式]">.</strong></p>
-<p>情形2： <img src="https://www.zhihu.com/equation?tex=%5Cmu+_%7B1%7D+%5Cgeq+0,a_%7B1%7D+=0" alt="[公式]"></p>
-<p>此时<img src="https://www.zhihu.com/equation?tex=g_%7B1%7D(x)+=a-x=+0" alt="[公式]">且<img src="https://www.zhihu.com/equation?tex=%5Cmu+_%7B1%7D+%3E+0" alt="[公式]"> ，可以理解为<strong>约束<img src="https://www.zhihu.com/equation?tex=g_%7B1%7D" alt="[公式]">起作用，且有<img src="https://www.zhihu.com/equation?tex=g_%7B1%7D(x)=0" alt="[公式]"></strong>.</p>
-<p><strong>合并情形1和情形2得：</strong><img src="https://www.zhihu.com/equation?tex=%5Cmu+_%7B1%7Dg_%7B1%7D=0" alt="[公式]">，<strong>且在约束起作用时<img src="https://www.zhihu.com/equation?tex=%5Cmu+_%7B1%7D+%3E+0" alt="[公式]">，<img src="https://www.zhihu.com/equation?tex=g_%7B1%7D(x)=0" alt="[公式]">；约束不起作用时<img src="https://www.zhihu.com/equation?tex=%5Cmu+_%7B1%7D=0" alt="[公式]">，<img src="https://www.zhihu.com/equation?tex=g_%7B1%7D(x)%3C0" alt="[公式]">.</strong></p>
-<p>同样地，分析<img src="https://www.zhihu.com/equation?tex=%5Cmu+_%7B2%7Db_%7B1%7D=0" alt="[公式]">，可得出约束<img src="https://www.zhihu.com/equation?tex=g_%7B2%7D" alt="[公式]">起作用和不起作用的情形，并分析得到<img src="https://www.zhihu.com/equation?tex=%5Cmu+_%7B2%7Dg_%7B2%7D=0" alt="[公式]">.</p>
-<p>由此，方程组（极值必要条件）转化为</p>
-<p><img src="https://www.zhihu.com/equation?tex=%5C%5B%5Cleft%5C%7B+%5Cbegin%7Barray%7D%7Bl%7D%0A%5Cfrac%7B%7Bdf%7D%7D%7B%7Bdx%7D%7D+++%7B%5Cmu+_1%7D%5Cfrac%7B%7Bd%7Bg_1%7D%7D%7D%7B%7Bdx%7D%7D+++%7B%5Cmu+_2%7D%5Cfrac%7B%7Bd%7Bg_2%7D%7D%7D%7B%7Bdx%7D%7D+=+0,%5C%5C%0A%7B%5Cmu+_1%7D%7Bg_1%7D%5Cleft(+x+%5Cright)+=+0,%7B%5Cmu+_2%7D%7Bg_2%7D%5Cleft(+x+%5Cright)+=+0,%5C%5C%0A%7B%5Cmu+_1%7D+%5Cge+0,%7B%5Cmu+_2%7D+%5Cge+0.%0A%5Cend%7Barray%7D+%5Cright.%5C%5D" alt="[公式]"></p>
-<p>这是一元一次的情形.类似地，对于多元多次不等式约束问题</p>
-<p><img src="https://www.zhihu.com/equation?tex=%5C%5B%5Cbegin%7Barray%7D%7Bl%7D%0A%5Cmin+%7B%5Crm%7B++%7D%7Df(%7B%5Cbf%7Bx%7D%7D)%5C%5C%0As.t.%7B%5Crm%7B+++%7D%7D%7Bg_j%7D(%7B%5Cbf%7Bx%7D%7D)+%5Cle+0%7B%5Crm%7B++%7D%7D(j+=+1,2,+%5Ccdots+,m)%0A%5Cend%7Barray%7D%5C%5D" alt="[公式]"></p>
-<p>我们有</p>
-<p><img src="https://www.zhihu.com/equation?tex=%5C%5B%5Cleft%5C%7B+%5Cbegin%7Barray%7D%7Bl%7D%0A%5Cfrac%7B%7B%5Cpartial+f%5Cleft(+%7B%7Bx%5E*%7D%7D+%5Cright)%7D%7D%7B%7B%5Cpartial+%7Bx_i%7D%7D%7D+++%5Csum%5Climits_%7Bj+=+1%7D%5Em+%7B%7B%5Cmu+_j%7D%5Cfrac%7B%7B%5Cpartial+%7Bg_j%7D%5Cleft(+%7B%7Bx%5E*%7D%7D+%5Cright)%7D%7D%7B%7B%5Cpartial+%7Bx_i%7D%7D%7D%7D++=+0%7B%5Crm%7B+%7D%7D%5Cleft(+%7Bi+=+1,2,...,n%7D+%5Cright),%5C%5C%0A%7B%5Cmu+_j%7D%7Bg_j%7D%5Cleft(+%7B%7Bx%5E*%7D%7D+%5Cright)+=+0%7B%5Crm%7B+%7D%7D%5Cleft(+%7Bj+=+1,2,...,m%7D+%5Cright),%5C%5C%0A%7B%5Cmu+_j%7D+%5Cge+0%7B%5Crm%7B+%7D%7D%5Cleft(+%7Bj+=+1,2,...,m%7D+%5Cright).%0A%5Cend%7Barray%7D+%5Cright.%5C%5D" alt="[公式]"></p>
-<p>上式便称为不等式约束优化问题的<strong>KKT（Karush-Kuhn-Tucker）条件.<img src="https://www.zhihu.com/equation?tex=%5Cmu+_%7Bj%7D" alt="[公式]">称为KKT乘子</strong>，且约束起作用时<img src="https://www.zhihu.com/equation?tex=%5Cmu+_%7Bj%7D%5Cgeq+0" alt="[公式]">，<img src="https://www.zhihu.com/equation?tex=g_%7Bj%7D(x)=0" alt="[公式]">；约束不起作用时<img src="https://www.zhihu.com/equation?tex=%5Cmu+_%7Bj%7D=+0" alt="[公式]">，<img src="https://www.zhihu.com/equation?tex=g_%7Bj%7D(x)%3C0" alt="[公式]">.</p>
-<p>别急，<strong>还木有完</strong>，我们还剩最后一个问题没有解决：为什么KKT乘子必须大于等于零——我将用几何性质来解释.</p>
-<p>由于</p>
-<p><img src="https://www.zhihu.com/equation?tex=%5C%5B%5Cfrac%7B%7B%5Cpartial+f%5Cleft(+%7B%7Bx%5E*%7D%7D+%5Cright)%7D%7D%7B%7B%5Cpartial+%7Bx_i%7D%7D%7D+++%5Csum%5Climits_%7Bj+=+1%7D%5Em+%7B%7B%5Cmu+_j%7D%5Cfrac%7B%7B%5Cpartial+%7Bg_j%7D%5Cleft(+%7B%7Bx%5E*%7D%7D+%5Cright)%7D%7D%7B%7B%5Cpartial+%7Bx_i%7D%7D%7D%7D++=+0%7B%5Crm%7B+%7D%7D%5Cleft(+%7Bi+=+1,2,...,n%7D+%5Cright)%5C%5D" alt="[公式]"></p>
-<p>用梯度表示：<img src="https://www.zhihu.com/equation?tex=%5C%5B%5Cnabla+f%5Cleft(+%7B%7B%7B%5Cbf%7Bx%7D%7D%5E*%7D%7D+%5Cright)+++%5Csum%5Climits_%7Bj+%5Cin+J%7D+%7B%7B%5Cmu+_j%7D%5Cnabla+%7Bg_j%7D%5Cleft(+%7B%7B%7B%5Cbf%7Bx%7D%7D%5E*%7D%7D+%5Cright)%7D++=+0%5C%5D" alt="[公式]">，<img src="https://www.zhihu.com/equation?tex=J" alt="[公式]">为起作用约束的集合.</p>
-<p>移项：<img src="https://www.zhihu.com/equation?tex=%5C%5B+-+%5Cnabla+f%5Cleft(+%7B%7B%7B%5Cbf%7Bx%7D%7D%5E*%7D%7D+%5Cright)+=+%5Csum%5Climits_%7Bj+%5Cin+J%7D+%7B%7B%5Cmu+_j%7D%5Cnabla+%7Bg_j%7D%5Cleft(+%7B%7B%7B%5Cbf%7Bx%7D%7D%5E*%7D%7D+%5Cright)%7D+,%5C%5D" alt="[公式]"></p>
-<p>注意到梯度为向量. 上式表示在约束极小值点<img src="https://www.zhihu.com/equation?tex=%5C%5B%7B%7B%5Cbf%7Bx%7D%7D%5E*%7D%5C%5D" alt="[公式]">处，函数<img src="https://www.zhihu.com/equation?tex=%5C%5Bf%5Cleft(+%7B%7B%7B%5Cbf%7Bx%7D%7D%5E*%7D%7D+%5Cright)%5C%5D" alt="[公式]">的负梯度一定可以表示成：**所有起作用约束在该点的梯度（等值线的法向量）的线性组合.**（复习课本中梯度的性质：某点梯度的方向就是函数等值线<img src="https://www.zhihu.com/equation?tex=%5C%5Bf(%7B%5Cbf%7Bx%7D%7D)+=+C%5C%5D" alt="[公式]">在这点的法线方向，等值线就是地理的等高线）</p>
-<p>为方便作图，假设现在<strong>只有两个起作用约束</strong>，我们作出图形如下图.注意我们上面推导过，约束起作用时<img src="https://www.zhihu.com/equation?tex=%5C%5B%7Bg_j%7D%5Cleft(+%7B%5Cbf%7Bx%7D%7D+%5Cright)+=+0%5C%5D" alt="[公式]">，所以此时约束在几何上应该是一簇<strong>约束平面</strong>.我们假设在<img src="https://www.zhihu.com/equation?tex=%5C%5B%7B%7B%5Cbf%7Bx%7D%7D%5E*%7D%5C%5D" alt="[公式]">取得极小值点，若同时满足<img src="https://www.zhihu.com/equation?tex=%5C%5B%7Bg_1%7D%5Cleft(+%7B%5Cbf%7Bx%7D%7D+%5Cright)+=+0%5C%5D" alt="[公式]">和<img src="https://www.zhihu.com/equation?tex=%5C%5B%7Bg_2%7D%5Cleft(+%7B%5Cbf%7Bx%7D%7D+%5Cright)+=+0%5C%5D" alt="[公式]">，则<img src="https://www.zhihu.com/equation?tex=%5C%5B%7B%7B%5Cbf%7Bx%7D%7D%5Ek%7D%5C%5D" alt="[公式]">一定在这两个平面的交线上，且<img src="https://www.zhihu.com/equation?tex=%5C%5B+-+%5Cnabla+f%5Cleft(+%7B%7B%7B%5Cbf%7Bx%7D%7D%5E*%7D%7D+%5Cright)+=+%5Csum%5Climits_%7Bj+%5Cin+J%7D+%7B%7B%5Cmu+_j%7D%5Cnabla+%7Bg_j%7D%5Cleft(+%7B%7B%7B%5Cbf%7Bx%7D%7D%5E*%7D%7D+%5Cright)%7D+%5C%5D" alt="[公式]">，即<img src="https://www.zhihu.com/equation?tex=%5C%5B+-+%5Cnabla+f%5Cleft(+%7B%7B%7B%5Cbf%7Bx%7D%7D%5Ek%7D%7D+%5Cright)%5C%5D" alt="[公式]">、<img src="https://www.zhihu.com/equation?tex=%5C%5B%5Cnabla+%7Bg_1%7D%5Cleft(+%7B%7B%7B%5Cbf%7Bx%7D%7D%5Ek%7D%7D+%5Cright)%5C%5D" alt="[公式]">和<img src="https://www.zhihu.com/equation?tex=%5C%5B%5Cnabla+%7Bg_2%7D%5Cleft(+%7B%7B%7B%5Cbf%7Bx%7D%7D%5Ek%7D%7D+%5Cright)%5C%5D" alt="[公式]">共面.</p>
-<p><img src="https://pic3.zhimg.com/80/v2-f8435761fcb25bf73eba09ac081e4d46_720w.jpg" alt="img"></p>
-<p>下图是在点<img src="https://www.zhihu.com/equation?tex=%5C%5B%7B%7B%5Cbf%7Bx%7D%7D%5Ek%7D%5C%5D" alt="[公式]">处沿<img src="https://www.zhihu.com/equation?tex=x_%7B1%7DOx_%7B2%7D" alt="[公式]">面的截面，过点<img src="https://www.zhihu.com/equation?tex=%5C%5B%7B%7B%5Cbf%7Bx%7D%7D%5Ek%7D%5C%5D" alt="[公式]">作目标函数的负梯度<img src="https://www.zhihu.com/equation?tex=%5C%5B+-+%5Cnabla+f%5Cleft(+%7B%7B%7B%5Cbf%7Bx%7D%7D%5Ek%7D%7D+%5Cright)%5C%5D" alt="[公式]">，它垂直于目标函数的等值线<img src="https://www.zhihu.com/equation?tex=%5C%5Bf(%7B%5Cbf%7Bx%7D%7D)+=+C%5C%5D" alt="[公式]">（高数课本：一点的梯度与等值线相互垂直），且指向目标函数<img src="https://www.zhihu.com/equation?tex=%5C%5Bf(%7B%5Cbf%7Bx%7D%7D)+%5C%5D" alt="[公式]">的最速减小方向.再作约束函数<img src="https://www.zhihu.com/equation?tex=%5C%5B%7Bg_1%7D%5Cleft(+%7B%5Cbf%7Bx%7D%7D+%5Cright)+=+0%5C%5D" alt="[公式]">和<img src="https://www.zhihu.com/equation?tex=%5C%5B%7Bg_2%7D%5Cleft(+%7B%5Cbf%7Bx%7D%7D+%5Cright)+=+0%5C%5D" alt="[公式]">的梯度<img src="https://www.zhihu.com/equation?tex=%5C%5B%5Cnabla+%7Bg_1%7D%5Cleft(+%7B%7B%7B%5Cbf%7Bx%7D%7D%5Ek%7D%7D+%5Cright)%5C%5D" alt="[公式]">和<img src="https://www.zhihu.com/equation?tex=%5C%5B%5Cnabla+%7Bg_2%7D%5Cleft(+%7B%7B%7B%5Cbf%7Bx%7D%7D%5Ek%7D%7D+%5Cright)%5C%5D" alt="[公式]">，它们分别垂直<img src="https://www.zhihu.com/equation?tex=%5C%5B%7Bg_1%7D%5Cleft(+%7B%5Cbf%7Bx%7D%7D+%5Cright)+=+0%5C%5D" alt="[公式]"> 和<img src="https://www.zhihu.com/equation?tex=%5C%5B%7Bg_2%7D%5Cleft(+%7B%5Cbf%7Bx%7D%7D+%5Cright)+=+0%5C%5D" alt="[公式]">两曲面在<img src="https://www.zhihu.com/equation?tex=%5C%5B%7B%7B%5Cbf%7Bx%7D%7D%5Ek%7D%5C%5D" alt="[公式]">的切平面，并形成一个锥形夹角区域.此时，可能有a、b两种情形：</p>
-<p><img src="https://pic3.zhimg.com/80/v2-4aa427ffa578f4daef3158db8828fa06_720w.jpg" alt="img"></p>
-<p>我们先来看情形b：若3个向量的位置关系如b所示，即<img src="https://www.zhihu.com/equation?tex=%5C%5B+-+%5Cnabla+f%5C%5D" alt="[公式]">落在<img src="https://www.zhihu.com/equation?tex=%5C%5B%5Cnabla+%7Bg_1%7D%5C%5D" alt="[公式]">和<img src="https://www.zhihu.com/equation?tex=%5C%5B%5Cnabla+%7Bg_2%7D%5C%5D" alt="[公式]">所形成的锥角区外的一侧. 此时，作等值面<img src="https://www.zhihu.com/equation?tex=%5C%5Bf(%7B%5Cbf%7Bx%7D%7D)+=+C%5C%5D" alt="[公式]">在点<img src="https://www.zhihu.com/equation?tex=%5C%5B%7B%7B%5Cbf%7Bx%7D%7D%5Ek%7D%5C%5D" alt="[公式]">的切平面（它与<img src="https://www.zhihu.com/equation?tex=%5C%5B+-+%5Cnabla+f%5Cleft(+%7B%7B%7B%5Cbf%7Bx%7D%7D%5Ek%7D%7D+%5Cright)%5C%5D" alt="[公式]">垂直），我们发现：<strong>沿着与负梯度 <img src="https://www.zhihu.com/equation?tex=%5C%5B+-+%5Cnabla+f%5C%5D" alt="[公式]">成锐角的方向移动（如下图红色箭头方向）</strong>，只要在红色区域取值，目标函数<img src="https://www.zhihu.com/equation?tex=%5C%5Bf(%7B%5Cbf%7Bx%7D%7D)+%5C%5D" alt="[公式]">总能减小.而红色区域是可行域（<img src="https://www.zhihu.com/equation?tex=%5C%5Bf(%7B%5Cbf%7Bx%7D%7D)+=+C%5C%5D" alt="[公式]">，C取不同的常数能得到不同的等值线，因此能取到红色区域），因此既可减小目标函数值，又不破坏约束条件. 这说明<img src="https://www.zhihu.com/equation?tex=%5C%5B%7B%7B%5Cbf%7Bx%7D%7D%5Ek%7D%5C%5D" alt="[公式]">仍可沿约束曲面移动而不破坏约束条件，且目标函数值还能够减小.所以<img src="https://www.zhihu.com/equation?tex=%5C%5B%7B%7B%5Cbf%7Bx%7D%7D%5Ek%7D%5C%5D" alt="[公式]">不是稳定的最优点，即不是局部极值点.</p>
-<p><img src="https://pic3.zhimg.com/80/v2-73dbbfe7b0a6903ad5205808ac688a1a_720w.jpg" alt="img"></p>
-<p>反过头来看情形a：<img src="https://www.zhihu.com/equation?tex=%5C%5B+-+%5Cnabla+f%5C%5D" alt="[公式]">落在<img src="https://www.zhihu.com/equation?tex=%5C%5B%5Cnabla+%7Bg_1%7D%5C%5D" alt="[公式]">和<img src="https://www.zhihu.com/equation?tex=%5C%5B%5Cnabla+%7Bg_2%7D%5C%5D" alt="[公式]">形成的锥角内. 此时，同样作<img src="https://www.zhihu.com/equation?tex=%5C%5Bf(%7B%5Cbf%7Bx%7D%7D)+=+C%5C%5D" alt="[公式]">在点<img src="https://www.zhihu.com/equation?tex=%5C%5B%7B%7B%5Cbf%7Bx%7D%7D%5Ek%7D%5C%5D" alt="[公式]">与<img src="https://www.zhihu.com/equation?tex=%5C%5B+-+%5Cnabla+f%5C%5D" alt="[公式]">垂直的切平面. 当从<img src="https://www.zhihu.com/equation?tex=%5C%5B%7B%7B%5Cbf%7Bx%7D%7D%5Ek%7D%5C%5D" alt="[公式]">出发<strong>沿着与负梯度<img src="https://www.zhihu.com/equation?tex=%5C%5B+-+%5Cnabla+f%5C%5D" alt="[公式]">成锐角的方向移动</strong>时，<strong>虽然能使目标函数值减小，但此时任何一点都不在可行区域内.</strong> 显然，此时<img src="https://www.zhihu.com/equation?tex=%5C%5B%7B%7B%5Cbf%7Bx%7D%7D%5Ek%7D%5C%5D" alt="[公式]">就是局部最优点<img src="https://www.zhihu.com/equation?tex=%5C%5B%7B%7B%5Cbf%7Bx%7D%7D%5E*%7D%5C%5D" alt="[公式]">，再做任何移动都将破坏约束条件，故它是稳定点.</p>
-<p>由于<img src="https://www.zhihu.com/equation?tex=%5C%5B+-+%5Cnabla+f%5Cleft(+%7B%7B%7B%5Cbf%7Bx%7D%7D%5E*%7D%7D+%5Cright)%5C%5D" alt="[公式]">和<img src="https://www.zhihu.com/equation?tex=%5C%5B++%5Cnabla+g_%7B1%7D%5Cleft(+%7B%7B%7B%5Cbf%7Bx%7D%7D%5E*%7D%7D+%5Cright)%5C%5D" alt="[公式]">、<img src="https://www.zhihu.com/equation?tex=%5C%5B++%5Cnabla+g_%7B2%7D%5Cleft(+%7B%7B%7B%5Cbf%7Bx%7D%7D%5E*%7D%7D+%5Cright)%5C%5D" alt="[公式]">在一个平面内，所以前者可看成是后两者的线性组合. 又由上面的几何分析知，<img src="https://www.zhihu.com/equation?tex=%5C%5B+-+%5Cnabla+f%5Cleft(+%7B%7B%7B%5Cbf%7Bx%7D%7D%5E*%7D%7D+%5Cright)%5C%5D" alt="[公式]">在<img src="https://www.zhihu.com/equation?tex=%5C%5B++%5Cnabla+g_%7B1%7D%5Cleft(+%7B%7B%7B%5Cbf%7Bx%7D%7D%5E*%7D%7D+%5Cright)%5C%5D" alt="[公式]">和<img src="https://www.zhihu.com/equation?tex=%5C%5B++%5Cnabla+g_%7B2%7D%5Cleft(+%7B%7B%7B%5Cbf%7Bx%7D%7D%5E*%7D%7D+%5Cright)%5C%5D" alt="[公式]">的夹角之间，所以线性组合的系数为正，有</p>
-<p><img src="https://www.zhihu.com/equation?tex=%5C%5B+-+%5Cnabla+f%5Cleft(+%7B%7B%7B%5Cbf%7Bx%7D%7D%5E*%7D%7D+%5Cright)%7B%5Crm%7B+=+%7D%7D%7B%5Cmu+_%7B%5Crm%7B1%7D%7D%7D%5Cnabla+%7Bg_%7B%5Crm%7B1%7D%7D%7D%5Cleft(+%7B%7B%7B%5Cbf%7Bx%7D%7D%5E*%7D%7D+%5Cright)%7B%5Crm%7B+++%7D%7D%7B%5Cmu+_%7B%5Crm%7B2%7D%7D%7D%5Cnabla+%7Bg_%7B%5Crm%7B2%7D%7D%7D%5Cleft(+%7B%7B%7B%5Cbf%7Bx%7D%7D%5E*%7D%7D+%5Cright)%5C%5D" alt="[公式]">，且<img src="https://www.zhihu.com/equation?tex=%5Cmu+_%7B1%7D%3E0" alt="[公式]">，<img src="https://www.zhihu.com/equation?tex=%5Cmu+_%7B2%7D%3E0" alt="[公式]">.</p>
-<p>这就是<img src="https://www.zhihu.com/equation?tex=%5Cmu+_%7Bj%7D%3E0" alt="[公式]">的原因. 类似地，当有多个不等式约束同时起作用时，要求<img src="https://www.zhihu.com/equation?tex=%5C%5B+-+%5Cnabla+f%5Cleft(+%7B%7B%7B%5Cbf%7Bx%7D%7D%5E*%7D%7D+%5Cright)%5C%5D" alt="[公式]">处于<img src="https://www.zhihu.com/equation?tex=%5C%5B++%5Cnabla+g_%7Bj%7D%5Cleft(+%7B%7B%7B%5Cbf%7Bx%7D%7D%5E*%7D%7D+%5Cright)%5C%5D" alt="[公式]">形成的超角锥（高维图形，我姑且称之为“超”）之内.</p>
-<h2 id="3-总结：同时包含等式和不等式约束的一般优化问题"><a href="#3-总结：同时包含等式和不等式约束的一般优化问题" class="headerlink" title="3.总结：同时包含等式和不等式约束的一般优化问题"></a><strong>3.总结：同时包含等式和不等式约束的一般优化问题</strong></h2><p><img src="https://www.zhihu.com/equation?tex=%5C%5B%5Cbegin%7Barray%7D%7Bl%7D%0A%5Cmin+%7B%5Crm%7B++%7D%7Df(%7B%5Cbf%7Bx%7D%7D)%5C%5C%0As.t.%7B%5Crm%7B+++%7D%7D%7Bg_j%7D(%7B%5Cbf%7Bx%7D%7D)+%5Cle+0(j+=+1,2,+%5Ccdots+,m)%5C%5C%0A%7B%5Crm%7B+++++++%7D%7D%7Bh_k%7D(%7B%5Cbf%7Bx%7D%7D)+=+0(k+=+1,2,+%5Ccdots+,l)%0A%5Cend%7Barray%7D%5C%5D" alt="[公式]"></p>
-<p><strong>KKT条件（<img src="https://www.zhihu.com/equation?tex=%5C%5B%7B%7B%5Cbf%7Bx%7D%7D%5E*%7D%5C%5D" alt="[公式]">是最优解的必要条件）为</strong></p>
-<p><img src="https://www.zhihu.com/equation?tex=%5C%5B%5Cleft%5C%7B+%5Cbegin%7Barray%7D%7Bl%7D%0A%5Cfrac%7B%7B%5Cpartial+f%7D%7D%7B%7B%5Cpartial+%7Bx_i%7D%7D%7D+++%5Csum%5Climits_%7Bj+=+1%7D%5Em+%7B%7B%5Cmu+_j%7D%7D+%5Cfrac%7B%7B%5Cpartial+%7Bg_j%7D%7D%7D%7B%7B%5Cpartial+%7Bx_i%7D%7D%7D+++%5Csum%5Climits_%7Bk+=+1%7D%5El+%7B%7B%5Clambda+_k%7D%5Cfrac%7B%7B%5Cpartial+%7Bh_k%7D%7D%7D%7B%7B%5Cpartial+%7Bx_i%7D%7D%7D%7D++=+0,%7B%5Crm%7B+%7D%7D%5Cleft(+%7Bi+=+1,2,...,n%7D+%5Cright)%5C%5C%0A%7Bh_k%7D%5Cleft(+%7B%5Cbf%7Bx%7D%7D+%5Cright)+=+0,%7B%5Crm%7B+(%7D%7Dk+=+1,2,+%5Ccdots+,l)%5C%5C%0A%7B%5Cmu+_j%7D%7Bg_j%7D%5Cleft(+%7B%5Cbf%7Bx%7D%7D+%5Cright)+=+0,%7B%5Crm%7B+(%7D%7Dj+=+1,2,+%5Ccdots+,m)%5C%5C%0A%7B%5Cmu+_j%7D+%5Cge+0.%0A%5Cend%7Barray%7D+%5Cright.%5C%5D" alt="[公式]"></p>
-<p>注意，<strong>对于等式约束的<strong><strong>Lagrange</strong></strong>乘子，并没有非负的要求！****以后求其极值点，不必再引入松弛变量，直接使用KKT条件判断！</strong></p>
-<p>这样，我们就推导完了KKT条件。各位看官可以自己分别罗列并比较一下：无约束优化、等式约束优化和等式+不等式约束优化条件下某点为局部最优解（极值点）的必要条件。</p>
-<p>如果对于Lagrange对偶性感兴趣的同学，可以进一步地研究下去，这样才能较深入地掌握SVM，本人也在学习中，欢迎交流~</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/08/06/KKT%E6%9D%A1%E4%BB%B6/" data-id="cl6huwqcq0000ekxn1bg9fmod" data-title="" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
     <article id="post-My-New-Post" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2022/08/06/My-New-Post/" class="article-date">
@@ -186,7 +85,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/08/06/My-New-Post/">My New Post</a>
+      <a class="p-name article-title" href="/2022/08/06/My-New-Post/">KKT条件</a>
     </h1>
   
 
@@ -198,7 +97,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/08/06/My-New-Post/" data-id="cl6huwqct0001ekxn6tjp5pws" data-title="My New Post" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2022/08/06/My-New-Post/" data-id="cl6hvd2c900009wxneinrf4cx" data-title="KKT条件" class="article-share-link">分享</a>
       
       
       
@@ -249,7 +148,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/08/06/hello-world/" data-id="cl6huwqcv0002ekxndsu809q4" data-title="Hello World" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2022/08/06/hello-world/" data-id="cl6hvd2cc00019wxn53xb56pd" data-title="Hello World" class="article-share-link">分享</a>
       
       
       
@@ -292,11 +191,7 @@
       <ul>
         
           <li>
-            <a href="/2022/08/06/KKT%E6%9D%A1%E4%BB%B6/">(no title)</a>
-          </li>
-        
-          <li>
-            <a href="/2022/08/06/My-New-Post/">My New Post</a>
+            <a href="/2022/08/06/My-New-Post/">KKT条件</a>
           </li>
         
           <li>
